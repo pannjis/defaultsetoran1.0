@@ -1,0 +1,1131 @@
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --primary: #1e6f48;       /* Emerald Green Utama */
+  --primary-hover: #165235; /* Darker Green */
+  --primary-light: #e8f5e9; /* Light Green BG */
+  --bg-body: #f8f9fa;       /* Light Gray Background */
+  --white: #ffffff;
+  --text-dark: #2d3436;
+  --text-gray: #636e72;
+  --danger: #ff6b6b;
+  --success: #00b894;
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --shadow-soft: 0 10px 40px -10px rgba(0,64,128,0.1);
+  --shadow-card: 0 5px 20px rgba(0,0,0,0.05);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
+
+body { display: flex; background: var(--bg-body); height: 100vh; overflow: hidden; color: var(--text-dark); }
+
+/* --- SIDEBAR MODERN --- */
+.sidebar {
+  width: 260px;
+  background: var(--primary);
+  color: var(--white);
+  display: flex;
+  flex-direction: column;
+  padding: 25px;
+  box-shadow: 4px 0 15px rgba(0,0,0,0.05);
+  z-index: 10;
+}
+
+.logo-area { 
+  font-size: 22px; 
+  font-weight: 700; 
+  margin-bottom: 50px; 
+  display: flex; 
+  align-items: center; 
+  gap: 12px; 
+  letter-spacing: 0.5px;
+}
+
+.menu-list { list-style: none; }
+.menu-list li {
+  padding: 14px 18px;
+  margin-bottom: 8px;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  color: rgba(255,255,255,0.7);
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.menu-list li:hover { background: rgba(255,255,255,0.1); color: #fff; transform: translateX(5px); }
+.menu-list li.active { background: var(--white); color: var(--primary); box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+
+/* --- MAIN CONTENT --- */
+.main-content { flex: 1; padding: 30px 40px; overflow-y: auto; }
+
+.topbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 35px; }
+.page-title { font-size: 28px; font-weight: 700; color: var(--text-dark); }
+
+.user-info { display: flex; align-items: center; gap: 12px; background: var(--white); padding: 5px 5px 5px 15px; border-radius: 50px; box-shadow: var(--shadow-card); }
+.user-info span { font-weight: 600; font-size: 14px; }
+.avatar { width: 38px; height: 38px; background: var(--primary-light); color: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; }
+
+/* --- CARDS & STATS --- */
+.card {
+  background: var(--white);
+  border-radius: var(--radius-md);
+  padding: 25px;
+  box-shadow: var(--shadow-card);
+  border: 1px solid rgba(0,0,0,0.02);
+  margin-bottom: 25px;
+  transition: transform 0.2s;
+}
+
+.cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 25px; margin-bottom: 30px; }
+.stat-card:hover { transform: translateY(-5px); }
+.stat-card h3 { font-size: 13px; color: var(--text-gray); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; font-weight: 600; }
+.stat-card h2 { font-size: 28px; font-weight: 700; }
+
+.text-green { color: var(--success); }
+.text-red { color: var(--danger); }
+.text-blue { color: #0984e3; }
+.text-bold { color: var(--text-dark); }
+
+/* --- FORMS (YANG DIPERBAIKI) --- */
+.form-group { margin-bottom: 20px; }
+.form-group label { display: block; margin-bottom: 8px; font-size: 13px; font-weight: 600; color: var(--text-gray); }
+
+/* Styling Input & Select agar Modern */
+.form-group input, .form-group select {
+  width: 100%; 
+  padding: 12px 16px; 
+  background: #fdfdfd;
+  border: 1px solid #e0e0e0; 
+  border-radius: 10px; /* Lebih bulat */
+  outline: none;
+  font-size: 14px;
+  color: var(--text-dark);
+  transition: all 0.3s ease;
+}
+
+/* Efek saat diklik (Focus) */
+.form-group input:focus, .form-group select:focus { 
+  border-color: var(--primary); 
+  background: var(--white);
+  box-shadow: 0 0 0 4px rgba(30, 111, 72, 0.1); /* Glow hijau halus */
+}
+
+.input-container { display: flex; gap: 25px; flex-wrap: wrap; }
+
+/* --- BUTTONS --- */
+button { 
+  padding: 12px 24px; 
+  border: none; 
+  border-radius: 50px; /* Tombol bentuk kapsul */
+  cursor: pointer; 
+  font-weight: 600; 
+  font-size: 14px;
+  transition: all 0.3s ease; 
+  letter-spacing: 0.5px;
+}
+
+.btn-primary { 
+  background: var(--primary); 
+  color: white; 
+  width: 100%; 
+  box-shadow: 0 4px 12px rgba(30, 111, 72, 0.2);
+}
+.btn-primary:hover { background: var(--primary-hover); transform: translateY(-2px); }
+
+.btn-success { background: var(--success); color: white; border-radius: 12px; }
+.btn-success:hover { background: #00a383; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0, 184, 148, 0.2); }
+
+.btn-danger { background: var(--danger); border-radius: 8px; }
+
+.btn-outline { 
+  background: transparent; 
+  border: 2px solid var(--primary); 
+  color: var(--primary); 
+  border-radius: 12px;
+}
+.btn-outline:hover { background: var(--primary-light); }
+
+/* --- TABLE --- */
+.table { width: 100%; border-collapse: separate; border-spacing: 0; margin-top: 10px; }
+.table th { 
+  text-align: left; 
+  padding: 15px; 
+  border-bottom: 2px solid #f0f0f0; 
+  color: var(--text-gray); 
+  font-size: 12px; 
+  text-transform: uppercase; 
+  letter-spacing: 0.5px; 
+}
+.table td { padding: 15px; border-bottom: 1px solid #f5f5f5; font-size: 14px; color: var(--text-dark); }
+.table tr:last-child td { border-bottom: none; }
+.table tr:hover td { background: var(--primary-light); color: var(--primary); }
+
+/* --- MODAL (POP UP) MODERN --- */
+.modal { 
+  display: none; 
+  position: fixed; 
+  top: 0; left: 0; 
+  width: 100%; height: 100%; 
+  background: rgba(0,0,0,0.4); /* Gelap transparan */
+  backdrop-filter: blur(5px);   /* Efek Blur di belakang */
+  justify-content: center; 
+  align-items: center; 
+  z-index: 1000;
+  animation: fadeIn 0.3s;
+}
+
+.modal-content { 
+  background: white; 
+  padding: 30px; 
+  border-radius: 20px; 
+  width: 350px; 
+  box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+  transform: scale(0.9);
+  animation: popUp 0.3s forwards cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.modal-content h4 { text-align: center; font-size: 18px; margin-bottom: 20px; color: var(--primary); }
+.modal-content input {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #eee;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  font-size: 16px;
+  text-align: center;
+}
+.modal-content input:focus { border-color: var(--primary); outline: none; }
+.modal-actions { display: flex; gap: 10px; }
+.modal-actions button { flex: 1; border-radius: 10px; }
+
+/* UTILS & ANIMATION */
+.hidden { display: none; }
+.dashboard-row { display: flex; gap: 20px; flex-wrap: wrap; }
+.dashboard-row > .card {
+  min-width: 0; /* PENTING: Mencegah kartu melebar paksa saat data masuk */
+}
+.buffer-footer { margin-top: 20px; display: flex; justify-content: space-between; align-items: center; font-weight: bold; border-top: 1px dashed #ddd; padding-top: 15px; }
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes popUp { to { transform: scale(1); } }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .sidebar { position: fixed; left: -270px; height: 100%; }
+  .sidebar.open { left: 0; }
+  .main-content { padding: 20px; }
+  .cards-grid { grid-template-columns: 1fr; }
+  .input-container { flex-direction: column; }
+}
+
+/* Scroll Tabel agar tidak merusak layout */
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid #eee;
+}
+
+.table th, .table td {
+  white-space: nowrap; /* Teks tabel tidak turun baris */
+}
+
+/* --- PRINT AREA (WAJIB DISINI AGAR HILANG DARI LAYAR) --- */
+#printArea {
+  display: none; /* Sembunyikan dari layar monitor */
+}
+
+/* --- SETTING PRINT (NOTA UKURAN A5 LANDSCAPE - MARGIN NORMAL) --- */
+  @media print {
+    /* 1. HILANGKAN ELEMEN WEB */
+    body > *:not(#printArea) { display: none !important; }
+
+    /* 2. ATUR UKURAN KERTAS & MARGIN */
+    @page {
+      size: 210mm 148mm; /* Ukuran A5 Landscape */
+      margin: 15mm;      /* GANTI DISINI: Memberi jarak tepi kertas (Normal) */
+    }
+
+    /* 3. ATUR BODY HTML */
+    body {
+      background: white !important;
+      margin: 0 !important; /* Margin body 0, karena sudah diatur di @page */
+      padding: 0 !important;
+      -webkit-print-color-adjust: exact;
+    }
+
+    /* 4. AREA PRINT MENYESUAIKAN MARGIN */
+    #printArea {
+      display: block !important;
+      width: 100%;        /* Lebar mengikuti margin kertas */
+      height: auto;       /* Tinggi menyesuaikan isi */
+      position: relative; /* Jangan absolute agar tidak menabrak margin */
+    }
+
+    /* --- DESAIN NOTA --- */
+    .invoice-box {
+      width: 100%;
+      /* height: 100%; Hapus height 100% agar border tidak kepotong */
+      padding: 10px 20px; /* Padding dalam nota diperlega */
+      font-family: 'Arial', sans-serif;
+      color: #000;
+      box-sizing: border-box;
+      border: 1px solid #000; /* Garis pinggir nota */
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .invoice-header {
+      text-align: center;
+      border-bottom: 2px solid #000;
+      padding-bottom: 8px; /* Sedikit dilonggarkan */
+      margin-bottom: 10px;
+    }
+
+    .invoice-header h2 {
+      margin: 0;
+      font-size: 16px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+    
+    .invoice-header p { margin: 4px 0 0; font-size: 11px; }
+
+    .invoice-info {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      font-size: 11px; 
+    }
+
+    /* Tabel Transaksi */
+    .invoice-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 11px; /* Font sedikit dibesarkan agar jelas */
+      margin-bottom: 10px;
+    }
+    
+    .invoice-table th {
+      border-top: 1px solid #000;
+      border-bottom: 1px solid #000;
+      padding: 5px; /* Padding cell ditambah */
+      background-color: #eee !important;
+      text-align: center;
+    }
+
+    .invoice-table td {
+      padding: 5px; /* Padding cell ditambah */
+      border-bottom: 1px dotted #ccc;
+    }
+    
+    /* Footer Total */
+    .table-footer td {
+      border-top: 1px solid #000;
+      font-weight: bold;
+      font-size: 12px;
+      padding-top: 5px;
+    }
+
+    .text-right { text-align: right !important; }
+    .text-center { text-align: center !important; }
+
+    /* Terbilang & TTD */
+    .terbilang-box {
+      font-style: italic;
+      padding: 5px;
+      border: 1px dashed #999;
+      background: #fafafa;
+      font-size: 10px;
+      margin-top: 10px;
+      margin-bottom: 15px; /* Jarak ke TTD */
+    }
+
+    .signature-section {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 20px; /* Jarak TTD dari pinggir border */
+      margin-top: 5px;
+      font-size: 11px;
+    }
+
+    .sign-box { text-align: center; width: 140px; }
+    .sign-space { height: 40px; } /* Ruang TTD */
+    .sign-name { border-top: 1px solid #000; padding-top: 4px; font-weight: bold; }
+  }
+
+  /* Hilangkan Header/Footer bawaan Browser (Tanggal/URL di pojok kertas) */
+  @page { 
+    margin: 10mm; /* Margin kertas */
+    size: auto;   /* Ikuti ukuran kertas printer */
+  }
+
+/* --- LOADING OVERLAY --- */
+.loading-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  
+  /* GANTI INI: Gunakan flex, tapi biarkan hidden menang jika ada */
+  display: flex; 
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  transition: opacity 0.3s;
+}
+
+/* TAMBAHKAN INI TEPAT DI BAWAHNYA AGAR BISA HILANG */
+.loading-overlay.hidden {
+  display: none !important;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: #fff;
+  animation: spin 1s ease-in-out infinite;
+  margin-bottom: 15px;
+}
+
+.loading-text {
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.report-header {
+  display: flex;
+  justify-content: space-between; /* Judul di Kiri, Tombol di Kanan */
+  align-items: center;
+  flex-wrap: wrap; /* Agar responsif di HP */
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+/* Container utama tombol */
+.report-controls {
+  display: flex;
+  align-items: center;
+  gap: 15px; /* Jarak antara Grup Filter dengan Grup Export */
+  flex-wrap: wrap; 
+}
+
+/* CSS BARU: Mengunci elemen dalam grup agar tetap sejajar */
+.filter-group, .export-group {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Jarak antar tombol/input kecil */
+  flex-wrap: nowrap; /* PENTING: Paksa satu baris */
+}
+
+/* Variasi khusus untuk grup filter agar terlihat menyatu */
+.filter-group {
+  background: #ffffff;
+  padding: 4px 8px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+}
+
+/* Pastikan input tanggal dan select tidak terlalu lebar/sempit */
+.report-controls select, 
+.report-controls input[type="date"] {
+  padding: 6px 10px !important;
+  height: 38px !important; /* Samakan tinggi dengan tombol */
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background: #fdfdfd;
+  font-size: 13px;
+  width: auto !important; /* Biarkan lebar menyesuaikan isi */
+}
+
+/* Pastikan semua tombol tingginya sama dan teks tidak turun */
+.report-controls button {
+  height: 38px !important; 
+  white-space: nowrap !important; /* PENTING: Teks tombol dilarang turun baris */
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  padding: 0 15px !important;
+  margin: 0 !important;
+}
+
+/* Khusus Tampilan HP (Mobile) */
+@media (max-width: 768px) {
+  .report-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .report-controls {
+    flex-direction: column;
+    width: 100%;
+    align-items: stretch;
+  }
+  
+  .filter-group, .export-group {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .filter-group input, 
+  .filter-group select, 
+  .report-controls button {
+    width: 100% !important; /* Full width di HP */
+    margin-bottom: 5px !important;
+  }
+}
+
+/* --- STYLE FILTER DASHBOARD (MODERN & SENADA) --- */
+.filter-card {
+  background: #ffffff;
+  padding: 15px 25px;
+  border-radius: 16px; /* Sudut melengkung senada dengan kartu lain */
+  box-shadow: 0 5px 20px rgba(0,0,0,0.03); /* Bayangan halus */
+  display: flex;
+  align-items: center;
+  gap: 15px; /* Jarak antar elemen */
+  margin-bottom: 30px;
+  border: 1px solid rgba(0,0,0,0.02);
+  flex-wrap: wrap; /* Agar aman di layar HP */
+}
+
+.filter-card label {
+  font-weight: 600;
+  color: #636e72; /* Warna abu elegan */
+  margin-right: 5px;
+  font-size: 14px;
+}
+
+/* Style Input Tanggal agar tidak kaku */
+.filter-card input[type="date"] {
+  padding: 8px 15px;
+  border: 1px solid #e0e0e0;
+  border-radius: 50px; /* Bentuk kapsul modern */
+  background: #f9f9f9;
+  color: #2d3436;
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  outline: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+/* Efek saat diklik / aktif */
+.filter-card input[type="date"]:focus {
+  background: #fff;
+  border-color: #1e6f48; /* Warna Hijau Utama */
+  box-shadow: 0 0 0 4px rgba(30, 111, 72, 0.1); /* Glow hijau tipis */
+}
+
+/* Style Tombol Filter */
+.filter-card button {
+  background: #1e6f48; /* Hijau Utama */
+  color: white;
+  border: none;
+  padding: 9px 25px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(30, 111, 72, 0.2);
+  margin-left: auto; /* Trik agar tombol geser ke paling kanan (opsional) */
+}
+
+.filter-card button:hover {
+  background: #165235; /* Hijau lebih gelap saat hover */
+  transform: translateY(-2px); /* Efek naik sedikit */
+  box-shadow: 0 6px 15px rgba(30, 111, 72, 0.3);
+}
+
+/* Perbaikan kecil agar tulisan "s/d" rapi */
+.filter-card span, .filter-text {
+  color: #b2bec3;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+/* --- STYLE INPUT EDIT DI TABEL BUFFER --- */
+.buffer-input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 13px;
+  font-family: 'Poppins', sans-serif;
+  transition: all 0.3s;
+}
+
+.buffer-input:focus {
+  border-color: #1e6f48;
+  background-color: #f8fffb;
+  outline: none;
+}
+
+/* --- STYLE KHUSUS MODAL EDIT --- */
+.detail-row td {
+  padding: 15px 10px !important;
+  vertical-align: top;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+/* Input Keterangan: Tampil seperti garis bawah */
+.edit-ket {
+  width: 100%;
+  border: none;
+  border-bottom: 1px dashed #ccc;
+  padding: 5px 0;
+  font-size: 13px;
+  color: #555;
+  background: transparent;
+  transition: 0.3s;
+}
+.edit-ket:focus {
+  border-bottom: 1px solid #1e6f48;
+  outline: none;
+  background: #fdfdfd;
+}
+
+/* Input Nominal: Tampil Tebal & Besar */
+.edit-nom-wrapper {
+  display: flex; 
+  align-items: center; 
+  justify-content: flex-end;
+  gap: 8px;
+  background: #f8f9fa;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #eee;
+}
+
+.edit-nom {
+  border: none;
+  background: transparent;
+  font-weight: bold;
+  font-size: 15px;
+  text-align: right;
+  width: 120px;
+  color: #2d3436;
+  outline: none;
+}
+
+/* Tombol Hapus Kecil */
+.btn-del-mini {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: none;
+  background: #ffecec;
+  color: #d63031;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.2s;
+}
+.btn-del-mini:hover {
+  background: #d63031;
+  color: white;
+}
+
+/* --- STYLE TABEL KOMPAK & RAPI --- */
+.table-compact td {
+  padding: 8px 10px !important; /* Padding kecil */
+  vertical-align: middle !important;
+  border-bottom: 1px solid #eee;
+  font-size: 13px; /* Font tidak terlalu besar */
+}
+
+/* Input Kecil Tipis */
+.input-mini {
+  width: 100%;
+  padding: 6px 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: inherit;
+  transition: all 0.2s;
+  background: #fdfdfd;
+}
+
+.input-mini:focus {
+  border-color: #1e6f48;
+  background: #fff;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(30, 111, 72, 0.1);
+}
+
+/* Badge Kecil */
+.badge-mini {
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: bold;
+  display: inline-block;
+  margin-top: 2px;
+}
+
+/* --- STYLE TAMBAHAN UNTUK MINI CARD --- */
+.mini-grid {
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Lebih rapat */
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.mini-card {
+  padding: 15px 20px; /* Padding lebih kecil */
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.mini-card h3 {
+  font-size: 11px; /* Font judul kecil */
+  margin-bottom: 2px;
+  color: #888;
+}
+
+.mini-card h2 {
+  font-size: 18px; /* Font angka tidak terlalu besar */
+  margin: 0;
+  color: #2d3436;
+}
+
+.mini-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+/* --- TAMBAHAN: SCROLL UNTUK TABEL PERFORMA CABANG --- */
+
+/* Target khusus tabel di dalam dashboard agar tidak merusak halaman laporan */
+.dashboard-row .table-responsive {
+  max-height: 350px; /* Batas tinggi tabel (bisa diubah sesuai selera) */
+  overflow-y: auto;  /* Aktifkan scroll vertikal otomatis */
+  display: block;    /* Memastikan div pembungkus merespon max-height */
+  border-bottom: 1px solid #eee; /* Garis penutup bawah agar rapi */
+}
+
+/* Agar Judul Kolom (Header) tetap menempel di atas saat discroll (Sticky Header) */
+.dashboard-row .table thead th {
+  position: sticky;
+  top: 0;
+  background-color: #ffffff; /* Penting: agar tulisan tidak bertumpuk transparan */
+  z-index: 2; /* Pastikan header ada di lapisan atas */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* Sedikit bayangan pemisah */
+}
+
+/* Mempercantik Scrollbar (Opsional - Webkit Browsers like Chrome) */
+.dashboard-row .table-responsive::-webkit-scrollbar {
+  width: 6px;
+}
+.dashboard-row .table-responsive::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+.dashboard-row .table-responsive::-webkit-scrollbar-thumb {
+  background: #ccc; 
+  border-radius: 10px;
+}
+.dashboard-row .table-responsive::-webkit-scrollbar-thumb:hover {
+  background: #aaa; 
+}
+
+/* 1. Tombol Menu Hamburger */
+.menu-toggle {
+  display: none; /* Sembunyi di Laptop */
+  font-size: 24px;
+  margin-right: 15px;
+  cursor: pointer;
+  color: var(--primary);
+}
+
+/* 2. Wrapper Tanggal (Agar sejajar di Laptop) */
+.date-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.date-divider {
+  font-weight: bold;
+  color: #b2bec3;
+}
+
+/* 3. Helper Text Desktop Only */
+.desktop-only { display: inline; }
+
+/* --- CSS KHUSUS TAMPILAN HP (width < 768px) --- */
+@media (max-width: 768px) {
+    
+  /* 1. Munculkan Menu Hamburger */
+  .menu-toggle { display: block; }
+  .desktop-only { display: none; }
+  .page-title { font-size: 18px; }
+
+  /* 2. Perbaikan Filter Tanggal (Dashboard) */
+  .filter-card {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    padding: 20px;
+  }
+  .filter-card label { margin-bottom: 0; }
+  
+  .date-wrapper {
+    flex-direction: column;
+    width: 100%;
+  }
+  .date-wrapper input {
+    width: 100% !important;
+    margin: 0;
+  }
+  .date-divider { display: none; }
+  .filter-card button {
+    width: 100%;
+    margin-top: 5px;
+  }
+
+  /* 3. Overlay Sidebar */
+  .sidebar.open::after {
+    content: '';
+    position: fixed;
+    top: 0; left: 260px;
+    width: 100vw; height: 100vh;
+    background: rgba(0,0,0,0.5);
+    z-index: -1;
+  }
+
+  /* 4. PERBAIKAN FINAL TOMBOL LAPORAN (SOLUSI PAMUNGKAS) */
+  
+  /* Pastikan container memaksa isinya melebar */
+  #page-report .report-controls {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    align-items: stretch !important; /* Kunci agar anak-anaknya melebar */
+    gap: 10px !important;
+    padding: 15px !important;
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    box-sizing: border-box;
+  }
+
+  /* Input & Select Lebar Penuh */
+  #page-report .report-controls select,
+  #page-report .report-controls input {
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 10px;
+    box-sizing: border-box;
+    display: block !important;
+  }
+
+  /* Sembunyikan garis strip (-) */
+  #page-report .report-controls span {
+    display: none !important;
+  }
+
+  /* TARGET KHUSUS TOMBOL (MENGGUNAKAN CLASS AGAR MENANG) */
+  #page-report .report-controls button,
+  #page-report .report-controls .btn-primary,
+  #page-report .report-controls .btn-success {
+    width: 100% !important;      /* Paksa lebar 100% */
+    min-width: 100% !important;  /* Jaga-jaga agar tidak mengecil */
+    display: flex !important;    /* Mode flex agar icon & teks rapi */
+    justify-content: center;     /* Teks di tengah */
+    align-items: center;
+    margin: 5px 0 !important;    /* Beri jarak atas-bawah */
+    padding: 12px !important;    /* Padding agar tombol tebal enak dipencet */
+    box-sizing: border-box !important;
+  }
+}
+
+/* 2. PENYERAGAMAN TOMBOL (KUNCI KERAPIHAN) */
+.report-controls button {
+  height: 38px; /* Tinggi FIX (Sama dengan input) */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px; /* Jarak Ikon ke Teks */
+  padding: 0 16px;
+  border-radius: 8px; /* Sudut tumpul (bukan bulat penuh) */
+  border: none;
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+  white-space: nowrap; /* PENTING: Agar teks tidak turun baris */
+  transition: all 0.2s ease;
+  color: white; /* Default teks putih */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Efek Hover Umum */
+.report-controls button:hover {
+  transform: translateY(-2px);
+  filter: brightness(110%);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+/* 3. WARNA-WARNI TOMBOL */
+.btn-filter { background-color: #2d3436; } /* Hitam Abu (Filter) */
+.btn-laba   { background-color: #00b894; } /* Hijau Tosca (Laba Rugi) */
+.btn-excel  { background-color: #27ae60; } /* Hijau Excel */
+.btn-pdf    { background-color: #c0392b; } /* Merah PDF */
+
+/* --- STYLE TAB TIPE TRANSAKSI (BARU) --- */
+.trx-tabs {
+  display: flex;
+  background-color: #f1f2f6; /* Abu-abu terang */
+  border-radius: 12px;
+  padding: 5px;
+  gap: 5px; /* Jarak antar tombol */
+  border: 1px solid #e0e0e0;
+}
+
+.tab-item {
+  flex: 1; /* Bagi dua sama rata */
+  text-align: center;
+  padding: 10px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  color: #b2bec3; /* Warna teks saat tidak aktif */
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+/* Hover Efek */
+.tab-item:hover {
+  background-color: #fff;
+  color: #636e72;
+}
+
+/* KONDISI AKTIF: PEMASUKAN (HIJAU) */
+.tab-item.active-masuk {
+  background-color: #1e6f48; /* Hijau Utama */
+  color: white;
+  box-shadow: 0 4px 10px rgba(30, 111, 72, 0.3);
+}
+
+/* KONDISI AKTIF: PENGELUARAN (MERAH) */
+.tab-item.active-keluar {
+  background-color: #d63031; /* Merah Bahaya */
+  color: white;
+  box-shadow: 0 4px 10px rgba(214, 48, 49, 0.3);
+}
+
+/* --- COMPACT MODAL STYLE (VERSI SLIM) --- */
+
+/* 1. Atur Padding Kotak Modal Utama */
+.compact-modal {
+  padding: 20px !important; /* Padding luar lebih tipis */
+}
+
+/* 2. Header & Judul Lebih Kecil */
+#detailTitle {
+  font-size: 16px !important; /* Judul tidak terlalu besar */
+}
+#detailTitle small {
+  font-size: 12px !important; /* Tanggal/Cabang kecil */
+}
+
+/* 3. Tabel Lebih Rapat (KUNCI UTAMA) */
+.table-compact td, 
+.table-compact th {
+  padding: 6px 8px !important; /* Spasi antar baris dipersempit */
+  font-size: 12px !important;   /* Font tabel dikecilkan */
+  height: auto !important;
+}
+
+/* 4. Input Edit Lebih Tipis */
+.input-mini {
+  padding: 4px 8px !important; /* Input lebih tipis */
+  font-size: 12px !important;
+  height: 30px !important;     /* Tinggi fix biar rapi */
+}
+
+/* 5. Tombol Hapus (Sampah) Lebih Kecil */
+.fa-trash-alt {
+  font-size: 12px !important;
+}
+
+/* 1. Container Tombol */
+.modal-actions {
+  display: flex;             /* Mode baris */
+  justify-content: center;   /* Posisi tengah */
+  gap: 10px;                 /* Jarak antar tombol konsisten */
+  padding-top: 20px !important;
+  border-top: 1px solid #eee;
+  flex-wrap: nowrap;         /* Dilarang turun baris */
+}
+
+/* 2. Styling Semua Tombol di Modal */
+.modal-actions button {
+  flex: 1;                   /* Semua tombol lebarnya dibagi rata */
+  height: 40px !important;   /* Tinggi dipaksa sama */
+  padding: 0 5px !important; /* Padding kanan kiri tipis aja */
+  margin: 0 !important;      /* Hapus margin inline yg bikin berantakan */
+  
+  font-size: 12px !important; 
+  font-weight: 600;
+  border-radius: 8px !important;
+  
+  /* Agar teks & ikon rapi di tengah */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;                  /* Jarak ikon ke teks */
+  white-space: nowrap;       /* Teks dilarang turun baris */
+}
+
+/* 3. Khusus tombol RE-INPUT warnanya biar beda dikit (Kuning Emas) */
+.btn-reinput {
+  background-color: #f39c12 !important;
+  color: white !important;
+  border: none !important;
+}
+.btn-reinput:hover {
+  background-color: #e67e22 !important;
+}
+
+/* --- UPDATE TINGGI TABEL MODAL --- */
+.modal .table-responsive {
+  max-height: 250px !important; /* SEBELUMNYA 400px, KITA KECILKAN JADI 250px */
+  overflow-y: auto;             /* Agar tetap bisa discroll */
+  border: 1px solid #eee;
+  margin-bottom: 10px;          /* Jarak sedikit ke tombol bawah */
+}
+
+/* --- Tambahkan di file Style.html --- */
+
+.btn-edit-mini {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: none;
+  background: #e3f2fd; /* Biru Muda */
+  color: #0984e3;      /* Biru Tua */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.2s;
+}
+.btn-edit-mini:hover {
+  background: #0984e3;
+  color: white;
+}
+
+/* --- Tambahkan di Style.html --- */
+
+/* Kolom Handle (Pegangan) */
+.drag-handle {
+  cursor: grab; /* Kursor bentuk tangan terbuka */
+  color: #b2bec3;
+  font-size: 16px;
+  text-align: center;
+  transition: color 0.2s;
+}
+
+.drag-handle:hover {
+  color: #2d3436; /* Warna lebih gelap saat hover */
+  cursor: grabbing; /* Kursor bentuk tangan menggenggam */
+}
+
+/* Efek saat baris sedang digeser */
+.sortable-ghost {
+  background-color: #f0f9ff;
+  opacity: 0.8;
+}
+
+/* --- STYLE TAMBAHAN FILTER CEPAT --- */
+#filterPreset {
+  cursor: pointer;
+  background-color: #ffff;
+  color: #2d3436;
+  font-weight: 500;
+  transition: all 0.3s;
+}
+
+#filterPreset:hover {
+  border-color: #1e6f48;
+  color: #1e6f48;
+}
+
+/* Penyesuaian Mobile */
+@media (max-width: 768px) {
+  #filterPreset {
+    width: 100%;       /* Full lebar di HP */
+    margin-right: 0 !important;
+    margin-bottom: 10px; /* Jarak ke input tanggal */
+    text-align: center;
+  }
+}
+
+/* Pastikan Dropdown Preset Laporan lebarnya pas */
+#reportPreset {
+  min-width: 120px; /* Agar teks tidak terpotong */
+  cursor: pointer;
+  background-color: #f8f9fa;
+}
+#reportPreset:hover {
+  border-color: #1e6f48;
+}
+
+/* --- PERBAIKAN TABEL TOP PENGELUARAN --- */
+
+/* 1. Target spesifik tabel Top Pengeluaran */
+#tableRincianKeluar {
+  table-layout: fixed; /* Kunci lebar tabel agar tidak melar */
+  width: 100%;
+}
+
+/* 2. Atur Kolom Kategori (Kiri) */
+#tableRincianKeluar td:first-child, 
+#tableRincianKeluar th:first-child {
+  white-space: normal !important; /* Izinkan teks turun baris */
+  word-wrap: break-word;          /* Potong kata jika terlalu panjang */
+  width: 60%;                     /* Beri porsi lebar 60% */
+  vertical-align: middle;         /* Posisi teks di tengah vertikal */
+  font-size: 12px;                /* Perkecil sedikit font kategori */
+  line-height: 1.4;               /* Jarak antar baris teks */
+}
+
+/* 3. Atur Kolom Jumlah (Kanan) */
+#tableRincianKeluar td:last-child, 
+#tableRincianKeluar th:last-child {
+  white-space: nowrap !important; /* Angka tetap satu baris */
+  width: 40%;                     /* Beri porsi lebar 40% */
+  vertical-align: middle;
+}
+
+/* 4. Sembunyikan Scrollbar Horizontal yang mengganggu */
+.card .table-responsive {
+  overflow-x: hidden; 
+}
+</style>

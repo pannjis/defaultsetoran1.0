@@ -1128,4 +1128,39 @@ button {
 .card .table-responsive {
   overflow-x: hidden; 
 }
+
+/* --- FIX SCROLL TABEL LAPORAN --- */
+#page-report .table-responsive {
+  max-height: 500px; /* Batas tinggi tabel (bisa diubah, misal 600px) */
+  overflow-y: auto;  /* Munculkan scrollbar vertikal jika data melebihi batas */
+  overflow-x: auto;  /* Munculkan scrollbar horizontal jika data melebar */
+  display: block;    /* Memastikan div merespon max-height */
+  border: 1px solid #eee;
+}
+
+/* --- FITUR TAMBAHAN: STICKY HEADER --- */
+/* Agar judul kolom (Tanggal, Cabang, dll) tetap menempel di atas saat discroll */
+#page-report .table thead th {
+  position: sticky;
+  top: 0;
+  background-color: #ffffff; /* Warna background header */
+  z-index: 10;               /* Pastikan header ada di lapisan paling atas */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* Sedikit bayangan pembatas */
+}
+
+/* Mempercantik Scrollbar (Opsional - Agar terlihat modern) */
+#page-report .table-responsive::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+#page-report .table-responsive::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+#page-report .table-responsive::-webkit-scrollbar-thumb {
+  background: #ccc; 
+  border-radius: 10px;
+}
+#page-report .table-responsive::-webkit-scrollbar-thumb:hover {
+  background: #aaa; 
+}
 </style>
